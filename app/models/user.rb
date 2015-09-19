@@ -15,6 +15,16 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 2 }, allow_nil: true
 
+  after_initialize :ensure_session_token
+
+  has_many :moderated_subs,
+    foreign_key: :moderator_id,
+    class_name: 'Sub'
+
+  has_many :posts,
+    foreign_key: :author_id,
+    class_name: 'Post'
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)
@@ -45,7 +55,5 @@ class User < ActiveRecord::Base
     check_password = BCrypt::Password.new(password_digest)
     check_password.is_password?(password)
   end
-
-
 
 end

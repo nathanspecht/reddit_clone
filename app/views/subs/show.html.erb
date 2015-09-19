@@ -1,0 +1,15 @@
+<h1> <%= @sub.title %> </h1>
+
+<p> <%= @sub.description %> </p>
+
+
+  <%= render @sub.posts %>
+<br>
+<%= link_to "Create a new post in this sub", new_sub_post_url(@sub.id) %>
+<br>
+<% if current_user && is_moderator? %>
+<%= link_to "edit", edit_sub_url(@sub) %>
+<br>
+<% end %>
+
+<%= link_to "subs", subs_url %>

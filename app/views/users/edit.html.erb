@@ -1,0 +1,5 @@
+<h1> edit user </h1>
+<%= render partial: 'form',
+           locals: { method: 'patch',
+                     action: user_url(@user),
+                     submit_text: 'update' } %>

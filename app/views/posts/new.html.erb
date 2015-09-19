@@ -1,0 +1,7 @@
+<h1>Create a kickass post!</h1>
+<h2>its friday</h2>
+
+<%= render partial: 'form',
+           locals: { method: 'post',
+                     action: posts_url,
+                     submit_text: 'post' }%>

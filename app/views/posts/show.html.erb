@@ -1,0 +1,17 @@
+<h1><%= @post.title %></h1>
+
+<h2>by <%= @post.author.username %></h2>
+<p>Post created <%= time_ago_in_words(@post.created_at) %> ago</p>
+
+<% unless @post.url == "" %>
+<p><%= link_to "Check out the link", @post.url %></p>
+<% end %>
+
+<p><%= @post.content %></p>
+
+<% if current_user == @post.author %>
+<p><%= link_to "edit", edit_post_url(@post) %></p>
+<% end %>
+
+
+<p><%= link_to "Back to the sub(not)reddit", sub_url(@post.sub) %></p>

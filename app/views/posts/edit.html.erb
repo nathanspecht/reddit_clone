@@ -1,0 +1,7 @@
+<h1>Edit your kickass post!</h1>
+<h2>its friday</h2>
+
+<%= render partial: 'form',
+           locals: { method: 'patch',
+                     action: posts_url,
+                     submit_text: 'yupdate' }%>
